@@ -1,17 +1,59 @@
+/* ================== Variables de couleur ================== */
+:root {
+  --primary-color: #4FC3F7;      /* couleur principale des boutons et icônes */
+  --primary-hover: #2196f3;      /* hover des boutons */
+  --bg-color: #f2f2f2;           /* fond général */
+  --block-bg: #ffffff;            /* fond des blocs */
+  --text-color: #333333;          /* couleur du texte */
+  --navbar-bg: #2d2d2d;           /* fond de la navbar */
+  --shadow-color: rgba(0,0,0,0.1);
+}
+
+/* ================== Styles généraux ================== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #f2f2f2;
-  color: #333;
+  background: linear-gradient(to bottom right, #f2f2f2, #e6f0fa);
+  color: var(--text-color);
+  transition: background 0.5s ease;
 }
 
+main {
+  margin-left: 80px;
+  padding: 2rem;
+}
+
+.page {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.page.active {
+  display: block;
+}
+
+.block {
+  background-color: var(--block-bg);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.block:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ================== Navbar ================== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 80px;
-  background-color: #2d2d2d;
+  background-color: var(--navbar-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,51 +73,35 @@ body {
 
 .nav-btn i {
   font-size: 1.5rem;
-  color: #4FC3F7;
+  color: var(--primary-color);
 }
-
 
 .nav-btn span {
   display: block;
   font-size: 0.7rem;
   margin-top: 4px;
 }
+
 .nav-btn:hover {
   transform: scale(1.1);
   color: white;
 }
 
-main {
-  margin-left: 80px;
-  padding: 2rem;
-}
-
-.page {
-  display: none;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.page.active {
-  display: block;
-}
-
-.block {
-  background-color: white;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
+/* ================== Top block ================== */
 .top-block {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: var(--block-bg);
   border-radius: 10px;
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.top-block:hover {
+  transform: translateY(-2px);
 }
 
 .top-block h1 {
@@ -93,6 +119,34 @@ main {
   margin: 0 auto;
 }
 
+/* ================== Projet links ================== */
+.project-links { 
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.project-links a {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.project-links a:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ================== Responsive ================== */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: row;
@@ -120,9 +174,20 @@ main {
   }
 }
 
+@media (max-width: 480px) {
+  .project-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-links a {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ================== Animations ================== */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
-
